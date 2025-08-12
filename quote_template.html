@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Devis Weego</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #0068c9; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 8px 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        .highlight { background-color: #f0f9ff; font-weight: bold; }
+        .footer { margin-top: 40px; font-size: 0.9rem; color: gray; }
+    </style>
+</head>
+<body>
+    <h1>Devis Weego</h1>
+    <p><strong>Date:</strong> {{ date }}</p>
+    <p><strong>Ville:</strong> {{ ville }} &nbsp;&nbsp; <strong>Distance:</strong> {{ distance }} km</p>
+    <p><strong>Coefficient de pression:</strong> {{ coeff_pression }}</p>
+    <p><strong>Shift:</strong> {{ shift }} &nbsp;&nbsp; <strong>Week-end:</strong> {{ weekend }} &nbsp;&nbsp; <strong>Jour férié:</strong> {{ holiday }}</p>
+
+    <table>
+        <tr><th>Détail</th><th>Montant (MAD)</th></tr>
+        <tr><td>Base fixe</td><td>{{ base_fixe }}</td></tr>
+        <tr><td>Tarif/km</td><td>{{ tarif_km }}</td></tr>
+        <tr><td>Coût distance</td><td>{{ distance_cost }}</td></tr>
+        <tr><td>Total avant multiplicateur</td><td>{{ base_plus_distance }}</td></tr>
+        <tr><td>Multiplicateur appliqué</td><td>{{ mult_total }}×</td></tr>
+        <tr class="highlight"><td>Sous-total</td><td>{{ subtotal }}</td></tr>
+        <tr><td>Bénéfice fournisseur (10%)</td><td>{{ benef_supplier }}</td></tr>
+        <tr><td>Prix transporteur (HT)</td><td>{{ prix_transporteur }}</td></tr>
+        <tr><td>Bénéfice Weego (20%)</td><td>{{ benef_weego }}</td></tr>
+        <tr class="highlight"><td>Prix final à proposer (HT)</td><td>{{ prix_weego }}</td></tr>
+    </table>
+
+    <p class="footer">Généré avec Weego Pricing Simulator</p>
+</body>
+</html>
