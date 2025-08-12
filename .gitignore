@@ -1,8 +1,43 @@
-# Ignore system and cache files
+# --- Python ---
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# --- Virtual environments ---
+venv/
+.env/
+env/
+.venv/
+*.env
+
+# --- Jupyter / Streamlit cache ---
+.ipynb_checkpoints
+.streamlit/
+.cache/
+
+# --- OS-generated files ---
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# --- Logs and dumps ---
 *.log
-venv/
-AppData/
+*.out
+*.err
+*.pid
+
+# --- Local config / secrets ---
+config.yaml
+secrets.toml
+*.key
+*.pem
+*.crt
+
+# --- Excel backups ---
+~$*.xlsx
