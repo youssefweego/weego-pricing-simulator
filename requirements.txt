@@ -3,3 +3,4 @@ pandas
 jinja2
 xhtml2pdf
 openpyxl
+python-dotenv

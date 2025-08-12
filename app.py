@@ -5,11 +5,11 @@ import pandas as pd
 from pathlib import Path
 from io import BytesIO
 from xhtml2pdf import pisa
-BASE_CSV = "https://docs.google.com/spreadsheets/d/17v8riPgTlZuHtLG7tetQMca0u_6emsfx/export?format=csv&gid=839414220"
-MULT_CSV = "https://docs.google.com/spreadsheets/d/17v8riPgTlZuHtLG7tetQMca0u_6emsfx/export?format=csv&gid=2005657488"
+from dotenv import load_dotenv
+import os
 
-# Then call:
-cities_data, multipliers = load_parameters(BASE_CSV, MULT_CSV)
+# Load environment variables from .env file
+load_dotenv()
 
 # Configure page FIRST - must be first Streamlit command
 st.set_page_config(
@@ -104,6 +104,15 @@ def load_parameters(gsheet_base_csv=None, gsheet_mult_csv=None):
             "Tanger": {"base": 1.0, "brackets": {10: 6.5, 30: 5.5, 50: 4.5}},
             "Casablanca": {"base": 3.0, "brackets": {10: 7.5, 30: 6.0, 50: 5.0}}
         }, {'non_normal': 0.75, 'weekend': 0.93, 'holiday': 1.1}
+
+
+# Get values from .env (falls back to defaults if missing)
+BASE_CSV = os.getenv("BASE_CSV", "https://docs.google.com/spreadsheets/d/FAKE_BASE/export?format=csv&gid=0000000000")
+MULT_CSV = os.getenv("MULT_CSV", "https://docs.google.com/spreadsheets/d/FAKE_MULT/export?format=csv&gid=0000000000")
+SECRET_KEY = os.getenv("SECRET_KEY", "changeme")
+
+# Then call:
+cities_data, multipliers = load_parameters(BASE_CSV, MULT_CSV)
 
 # --- PDF GENERATION ---
 def generate_pdf(context):
